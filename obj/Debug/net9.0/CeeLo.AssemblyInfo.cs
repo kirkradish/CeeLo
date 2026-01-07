@@ -13,7 +13,7 @@ using System.Reflection;
 [assembly: System.Reflection.AssemblyCompanyAttribute("CeeLo")]
 [assembly: System.Reflection.AssemblyConfigurationAttribute("Debug")]
 [assembly: System.Reflection.AssemblyFileVersionAttribute("1.0.0.0")]
-[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+36365074e2dcfc233e13068ca1f0d650b641d131")]
+[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+daa989afa2eb72eb769c98dcce73173f70f5e9b2")]
 [assembly: System.Reflection.AssemblyProductAttribute("CeeLo")]
 [assembly: System.Reflection.AssemblyTitleAttribute("CeeLo")]
 [assembly: System.Reflection.AssemblyVersionAttribute("1.0.0.0")]

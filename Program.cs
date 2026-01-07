@@ -1,4 +1,6 @@
-﻿Random rnd = new Random();
+﻿using System.Linq.Expressions;
+
+Random rnd = new Random();
 
 int[] rollDice()
 {
@@ -36,15 +38,43 @@ string getPlayerName()
 }
 
 
+void checkRoll(string name, int[] roll)
+{
+  // 123 loses
+  // 456 wins over trips
+  // trips win
+
+  // check for trips
+  // check for doubles, then check for other number, that's the point
+  int die1 = roll[0];
+  int die2 = roll[1];
+  int die3 = roll[2];
+
+  if (die1 == die2 && die2 == die3)
+  {
+    Console.WriteLine($"Trips, dog, {name} wins!");
+  }
+  else if (die1 == die2 || die1 == die3 || die2 == die3)
+  {
+    Console.WriteLine($"Yo, {name} got doubles");
+    if (die1 == die2)
+      Console.WriteLine($"Point: {die3}");
+    else if (die1 == die3)
+      Console.WriteLine($"Point: {die2}");
+    else
+      Console.WriteLine($"Point: {die1}");
+  }
+}
+
+
 string playerName = getPlayerName();
 
 
 Console.WriteLine($"\nHey {playerName}, here's some dice. \nSoon we're going to take bets, but for now you can keep a hold of your money. \nYou'll also be able to play and bet as many times as you want or until you're out. \nFor now try one roll against our computer.\n");
 
-Console.WriteLine("Want to play? y or n: ");
-ConsoleKeyInfo keyPress = Console.ReadKey();
+ConsoleKeyInfo keyPress;
 
-if (keyPress.Key == ConsoleKey.Y)
+do
 {
   Console.WriteLine("\n");
   int[] playerRoll = rollDice();
@@ -52,8 +82,11 @@ if (keyPress.Key == ConsoleKey.Y)
 
   displayRolls(playerName, playerRoll);
   displayRolls("Computer", computerRoll);
+
+  checkRoll(playerName, playerRoll);
+  checkRoll("Computer", computerRoll);
+
+  Console.WriteLine("Want to play again? y or n: ");
+  keyPress = Console.ReadKey();
 }
-else
-{
-  Console.WriteLine("Ok, see ya then");
-}
+while (keyPress.Key == ConsoleKey.Y);
