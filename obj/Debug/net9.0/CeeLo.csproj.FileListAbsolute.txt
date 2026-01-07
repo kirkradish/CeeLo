@@ -1,0 +1,15 @@
+/Users/kirkradish/Desktop/DEV_PROJECTS/C_SHARP/CeeLo/bin/Debug/net9.0/CeeLo
+/Users/kirkradish/Desktop/DEV_PROJECTS/C_SHARP/CeeLo/bin/Debug/net9.0/CeeLo.deps.json
+/Users/kirkradish/Desktop/DEV_PROJECTS/C_SHARP/CeeLo/bin/Debug/net9.0/CeeLo.runtimeconfig.json
+/Users/kirkradish/Desktop/DEV_PROJECTS/C_SHARP/CeeLo/bin/Debug/net9.0/CeeLo.dll
+/Users/kirkradish/Desktop/DEV_PROJECTS/C_SHARP/CeeLo/bin/Debug/net9.0/CeeLo.pdb
+/Users/kirkradish/Desktop/DEV_PROJECTS/C_SHARP/CeeLo/obj/Debug/net9.0/CeeLo.GeneratedMSBuildEditorConfig.editorconfig
+/Users/kirkradish/Desktop/DEV_PROJECTS/C_SHARP/CeeLo/obj/Debug/net9.0/CeeLo.AssemblyInfoInputs.cache
+/Users/kirkradish/Desktop/DEV_PROJECTS/C_SHARP/CeeLo/obj/Debug/net9.0/CeeLo.AssemblyInfo.cs
+/Users/kirkradish/Desktop/DEV_PROJECTS/C_SHARP/CeeLo/obj/Debug/net9.0/CeeLo.csproj.CoreCompileInputs.cache
+/Users/kirkradish/Desktop/DEV_PROJECTS/C_SHARP/CeeLo/obj/Debug/net9.0/CeeLo.dll
+/Users/kirkradish/Desktop/DEV_PROJECTS/C_SHARP/CeeLo/obj/Debug/net9.0/refint/CeeLo.dll
+/Users/kirkradish/Desktop/DEV_PROJECTS/C_SHARP/CeeLo/obj/Debug/net9.0/CeeLo.pdb
+/Users/kirkradish/Desktop/DEV_PROJECTS/C_SHARP/CeeLo/obj/Debug/net9.0/CeeLo.genruntimeconfig.cache
+/Users/kirkradish/Desktop/DEV_PROJECTS/C_SHARP/CeeLo/obj/Debug/net9.0/ref/CeeLo.dll
+/Users/kirkradish/Desktop/DEV_PROJECTS/C_SHARP/CeeLo/obj/Debug/net9.0/CeeLo.sourcelink.json
