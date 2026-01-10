@@ -1,9 +1,8 @@
 ﻿using System.Linq.Expressions;
 using System.Security;
 using GameActions;
-using Dice;
 
-AllDice dice = new AllDice();
+
 CeeLoFunctions actions = new CeeLoFunctions();
 
 string playerName = actions.getPlayerName();
@@ -18,8 +17,10 @@ do
   int[] playerRoll = actions.rollDice();
   int[] computerRoll = actions.rollDice();
 
-  actions.displayRolls(playerName, playerRoll);
-  actions.displayRolls("Computer", computerRoll);
+  actions.assignDice(playerName, playerRoll);
+  actions.assignDice("Computer", computerRoll);
+  // actions.displayRolls(playerName, playerRoll);
+  // actions.displayRolls("Computer", computerRoll);
 
   actions.checkRoll(playerName, playerRoll);
   actions.checkRoll("Computer", computerRoll);
