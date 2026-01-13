@@ -31,20 +31,6 @@ namespace GameActions
     }
 
 
-    // public void displayRolls(string user, int[] dice)
-    // {
-    //   Console.WriteLine($"{user} rolls: ");
-
-    //   for (int i = 0; i < dice.Length; i++)
-    //   {
-    //     Console.Write($"{dice[i]}");
-    //     if (i != dice.Length -1)
-    //       Console.Write(", ");
-    //   }
-    //   Console.WriteLine("\n");
-    // }
-
-
     public void assignDice(string user, int[] roll)
     {
       Console.WriteLine($"{user} rolls: ");
@@ -77,32 +63,29 @@ namespace GameActions
     }
 
 
-    public void checkRoll(string name, int[] roll)
+    public int checkRoll(string name, int[] dice)
     {
       // 123 loses
       // 456 wins over trips
       // trips win
+      int point = 0;
 
-      // check for trips
-      // check for doubles, then check for other number, that's the point
-      int die1 = roll[0];
-      int die2 = roll[1];
-      int die3 = roll[2];
-
-      if (die1 == die2 && die2 == die3)
+      if (dice[0] == dice[1] || dice[0] == dice[2] || dice[1] == dice[2])
       {
-        Console.WriteLine($"Trips, dog, {name} wins!");
-      }
-      else if (die1 == die2 || die1 == die3 || die2 == die3)
-      {
-        Console.WriteLine($"Yo, {name} got doubles");
-        if (die1 == die2)
-          Console.WriteLine($"Point: {die3}");
-        else if (die1 == die3)
-          Console.WriteLine($"Point: {die2}");
+        if (dice[0] == dice[1])
+          point = dice[2];
+        else if (dice[0] == dice[2])
+          point = dice[1];
         else
-          Console.WriteLine($"Point: {die1}");
+          point = dice[0];
       }
+      return point;
+    }
+
+    public bool checkTrips(int[] dice)
+    {
+      Console.WriteLine($"TRIPS, DOG!");
+      return (dice[0] == dice[1] && dice[1] == dice[2]) ? true : false;
     }
   }
 }
