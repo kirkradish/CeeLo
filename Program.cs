@@ -11,6 +11,8 @@ string playerName = actions.getPlayerName();
 // give x or x win/loss stats and total money won/lost when they exit
 
 ConsoleKeyInfo keyPress;
+int playerPoint;
+int computerPoint;
 
 do
 {
@@ -19,11 +21,16 @@ do
 
   actions.assignDice(playerName, playerRoll);
   actions.assignDice("Computer", computerRoll);
-  // actions.displayRolls(playerName, playerRoll);
-  // actions.displayRolls("Computer", computerRoll);
 
-  actions.checkRoll(playerName, playerRoll);
-  actions.checkRoll("Computer", computerRoll);
+  playerPoint = actions.checkRoll(playerName, playerRoll);
+  computerPoint = actions.checkRoll("Computer", computerRoll);
+
+  if (playerPoint > computerPoint)
+    Console.WriteLine($"{playerName} wins with {playerPoint}");
+  else if (computerPoint > playerPoint)
+    Console.WriteLine($"Computer wins with {computerPoint}");
+  else
+    Console.WriteLine("Tie game");
 
   Console.WriteLine("Want to play again? y or n: ");
   keyPress = Console.ReadKey();
