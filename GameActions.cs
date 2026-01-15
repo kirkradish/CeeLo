@@ -63,11 +63,8 @@ namespace GameActions
     }
 
 
-    public int checkRoll(string name, int[] dice)
+    public int checkPoint(string name, int[] dice)
     {
-      // 123 loses
-      // 456 wins over trips
-      // trips win
       int point = 0;
 
       if (dice[0] == dice[1] || dice[0] == dice[2] || dice[1] == dice[2])
@@ -82,10 +79,19 @@ namespace GameActions
       return point;
     }
 
-    public bool checkTrips(int[] dice)
+    public bool isTrips(int[] dice)
     {
-      Console.WriteLine($"TRIPS, DOG!");
       return (dice[0] == dice[1] && dice[1] == dice[2]) ? true : false;
+    }
+
+    public bool is456(int[] dice)
+    {
+      return (dice.Contains(4) && dice.Contains(5) && dice.Contains(6)) ? true : false;
+    }
+
+    public bool is123(int[] dice)
+    {
+      return (dice.Contains(1) && dice.Contains(2) && dice.Contains(3)) ? true : false;
     }
   }
 }
