@@ -14,75 +14,80 @@ ConsoleKeyInfo keyPress;
 
 do
 {
-  int[] playerRoll = actions.rollDice();
-  int[] computerRoll = actions.rollDice();
+  // Player player1 = new Player(playerName, actions.rollDice());
+  // Player computer = new Player("Computer", actions.rollDice());
+  Player player1 = new Player(playerName, [3,3,3]); // Testing specific rolls
+  Player computer = new Player("Computer", [2,2,2]); // use the above for random rolls
 
-  actions.assignDice(playerName, playerRoll);
-  actions.assignDice("Computer", computerRoll);
+  Console.WriteLine($"Hey {player1.Name}, Welcome to the game");
 
-  int playerPoint;
-  int computerPoint;
-  playerPoint = actions.checkPoint(playerName, playerRoll);
-  computerPoint = actions.checkPoint("Computer", computerRoll);
+  actions.assignDice(player1.Name, player1.Roll);
+  actions.assignDice("Computer", computer.Roll);
 
-  bool playerPointWin = false;
-  bool computerPointWin = false;
-  bool player456Win = false;
-  bool computer456Win = false;
-  bool playerTripsWin = false;
-  bool computerTripsWin = false;
-  bool playerAutoLoss = false;
-  bool computerAutoLoss = false;
+  bool tripsWin = actions.checkForTrips([player1, computer]);
+
+  // int playerPoint;
+  // int computerPoint;
+  // playerPoint = actions.checkPoint(playerName, player1.Roll);
+  // computerPoint = actions.checkPoint("Computer", computer.Roll);
+
+  // bool playerPointWin = false;
+  // bool computerPointWin = false;
+  // bool player456Win = false;
+  // bool computer456Win = false;
+  // bool playerTripsWin = false;
+  // bool computerTripsWin = false;
+  // bool playerAutoLoss = false;
+  // bool computerAutoLoss = false;
   
-  player456Win = actions.is456(playerRoll) ? true : false;
-  playerTripsWin = actions.isTrips(playerRoll) ? true : false;
-  computer456Win = actions.is456(computerRoll) ? true : false;
-  computerTripsWin = actions.isTrips(computerRoll) ? true : false;
-  playerAutoLoss = actions.is123(playerRoll) ? true : false;
-  computerAutoLoss = actions.is123(computerRoll) ? true : false;
+  // player456Win = actions.is456(player1.Roll) ? true : false;
+  // // playerTripsWin = actions.isTrips(player1.Roll) ? true : false;
+  // computer456Win = actions.is456(computer.Roll) ? true : false;
+  // // computerTripsWin = actions.isTrips(computerRoll) ? true : false;
+  // playerAutoLoss = actions.is123(player1.Roll) ? true : false;
+  // computerAutoLoss = actions.is123(computer.Roll) ? true : false;
 
 
-  if (playerPoint > computerPoint)
-    playerPointWin = true;
-  else if (computerPoint > playerPoint)
-    computerPointWin = true;
+  // if (playerPoint > computerPoint)
+  //   playerPointWin = true;
+  // else if (computerPoint > playerPoint)
+  //   computerPointWin = true;
 
 
-  if (player456Win || computer456Win)
-  {
-    if (player456Win)
-      Console.WriteLine($"{playerName} Wins 456 yo!");
-    else if (computer456Win)
-      Console.WriteLine("Computer Wins 456.");
-  }
-  // Determine who rolls first.
-  // There can be a chance where both roll 456 or trips
-  // but I think technically the first roll would automatically win and take the money.
-  else if (playerTripsWin || computerTripsWin)
-  {
-    if (playerTripsWin)
-      Console.WriteLine($"{playerName} Wins with TRIPS yo!");
-    else if (computerTripsWin)
-      Console.WriteLine("Computer Wins with TRIPS.");
-  }
-  else if (playerAutoLoss || computerAutoLoss)
-  {
-    if (playerAutoLoss)
-      Console.WriteLine($"{playerName} Losses with 123");
-    else if (computerAutoLoss)
-      Console.WriteLine("Computer Losses with 123");
-  }
-  else if (playerPointWin || computerPointWin)
-  {
-    if (playerPointWin)
-      Console.WriteLine($"{playerName} Wins with {playerPoint}");
-    else if (computerPointWin)
-      Console.WriteLine($"Computer Wins with {computerPoint}");
-  }
-  else if (playerPoint == 0 && computerPoint == 0)
-    Console.WriteLine("No one wins");
-  else
-    Console.WriteLine("Tie");
+
+  // checkForTrips()
+  // if (player456Win || computer456Win)
+  // {
+  //   if (player456Win)
+  //     Console.WriteLine($"{playerName} Wins 456 yo!");
+  //   else if (computer456Win)
+  //     Console.WriteLine("Computer Wins 456.");
+  // }
+  // else if (playerTripsWin || computerTripsWin)
+  // {
+  //   if (playerTripsWin)
+  //     Console.WriteLine($"{playerName} Wins with TRIPS yo!");
+  //   else if (computerTripsWin)
+  //     Console.WriteLine("Computer Wins with TRIPS.");
+  // }
+  // else if (playerAutoLoss || computerAutoLoss)
+  // {
+  //   if (playerAutoLoss)
+  //     Console.WriteLine($"{playerName} Losses with 123");
+  //   else if (computerAutoLoss)
+  //     Console.WriteLine("Computer Losses with 123");
+  // }
+  // else if (playerPointWin || computerPointWin)
+  // {
+  //   if (playerPointWin)
+  //     Console.WriteLine($"{playerName} Wins with {playerPoint}");
+  //   else if (computerPointWin)
+  //     Console.WriteLine($"Computer Wins with {computerPoint}");
+  // }
+  // else if (playerPoint == 0 && computerPoint == 0)
+  //   Console.WriteLine("No one wins");
+  // else
+  //   Console.WriteLine("Tie");
   // Also clean this up
 
   Console.WriteLine("Want to play again? y or n: ");

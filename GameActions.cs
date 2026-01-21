@@ -1,3 +1,4 @@
+using System.Security;
 using Dice;
 
 namespace GameActions
@@ -79,9 +80,44 @@ namespace GameActions
       return point;
     }
 
-    public bool isTrips(int[] dice)
+    public bool checkForTrips(Player[] players)
     {
-      return (dice[0] == dice[1] && dice[1] == dice[2]) ? true : false;
+      // Parameters: [player1, computer]
+
+      foreach (Player curPlayer in players)
+      {
+        if (curPlayer.Roll[0] == curPlayer.Roll[1] && curPlayer.Roll[1] == curPlayer.Roll[2])
+        {
+          curPlayer.Point = curPlayer.Roll[0];
+          curPlayer.Trips = true;
+        }
+      }
+
+      if (players[0].Trips && players[1].Trips)
+      {
+        Console.WriteLine("Yo, yall both got trips.");
+        if (players[0].Point > players[1].Point)
+          Console.WriteLine($"{players[0].Name} Wins with a higher {players[0].Point}!");
+        else if (players[1].Point > players[0].Point)
+          Console.WriteLine("Computer Wins with a higher {playerPoint}");
+        else
+          Console.WriteLine("Tie");
+        
+        return true;
+      }
+      else if (!players[0].Trips && !players[1].Trips) {
+        Console.WriteLine("No trips");
+        return false;
+      }
+      else
+      {
+        if (players[0].Trips)
+          Console.WriteLine($"{players[0].Name} Wins with TRIPS");
+        else
+          Console.WriteLine($"{players[1].Name} Wins with TRIPS");
+
+        return true;
+      }
     }
 
     public bool is456(int[] dice)
