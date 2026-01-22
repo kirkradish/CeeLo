@@ -16,16 +16,17 @@ do
 {
   // Player player1 = new Player(playerName, actions.rollDice());
   // Player computer = new Player("Computer", actions.rollDice());
-  Player player1 = new Player(playerName, [3,3,3]); // Testing specific rolls
-  Player computer = new Player("Computer", [2,2,2]); // use the above for random rolls
+  Player player1 = new Player(playerName, [4,5,6]); // Testing specific rolls
+  Player computer = new Player("Computer", [4,2,6]); // use the above for random rolls
 
   Console.WriteLine($"Hey {player1.Name}, Welcome to the game");
 
   actions.assignDice(player1.Name, player1.Roll);
   actions.assignDice("Computer", computer.Roll);
 
-  bool tripsWin = actions.checkForTrips([player1, computer]);
-
+  bool win456 = actions.checkFor456([player1, computer]);
+  bool winTrips = actions.checkForTrips([player1, computer]);
+  
   // int playerPoint;
   // int computerPoint;
   // playerPoint = actions.checkPoint(playerName, player1.Roll);

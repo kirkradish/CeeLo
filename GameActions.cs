@@ -120,9 +120,38 @@ namespace GameActions
       }
     }
 
-    public bool is456(int[] dice)
+    public bool checkFor456(Player[] players)
     {
-      return (dice.Contains(4) && dice.Contains(5) && dice.Contains(6)) ? true : false;
+      // Parameters: [player1, computer]
+
+      foreach(Player player in players)
+      {
+        if (player.Roll.Contains(4) && player.Roll.Contains(5) && player.Roll.Contains(6))
+        {
+          player.FourFiveSix = true;
+        }
+      }
+
+      if (players[0].FourFiveSix && players[1].FourFiveSix)
+      {
+        Console.WriteLine("Add another bet and roll again");
+        return true;
+      }
+      else if (players[0].FourFiveSix && !players[1].FourFiveSix)
+      {
+        Console.WriteLine($"456, {players[0].Name}! You win.");
+        return true;
+      }
+      else if (!players[0].FourFiveSix && players[1].FourFiveSix)
+      {
+        Console.WriteLine("Computer wins with 456");
+        return true;
+      }
+      else
+      {
+        Console.WriteLine("No 456");
+        return false;
+      }
     }
 
     public bool is123(int[] dice)
