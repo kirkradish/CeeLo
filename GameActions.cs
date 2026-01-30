@@ -1,5 +1,6 @@
 using System.Security;
 using Dice;
+using Microsoft.VisualBasic;
 
 namespace GameActions
 {
@@ -34,8 +35,6 @@ namespace GameActions
 
     public void assignDice(string user, int[] roll)
     {
-      Console.WriteLine($"{user} rolls: ");
-
       foreach (var die in roll)
       {
         switch (die)
@@ -64,20 +63,44 @@ namespace GameActions
     }
 
 
-    public int checkPoint(string name, int[] dice)
+    public void checkPoint(Player[] players)
     {
-      int point = 0;
+      // Parameters: [player1, computer]
 
-      if (dice[0] == dice[1] || dice[0] == dice[2] || dice[1] == dice[2])
+      foreach (Player player in players)
       {
-        if (dice[0] == dice[1])
-          point = dice[2];
-        else if (dice[0] == dice[2])
-          point = dice[1];
-        else
-          point = dice[0];
+        if (player.Roll[0] == player.Roll[1] || player.Roll[0] == player.Roll[2] || player.Roll[1] == player.Roll[2])
+        {
+          if (player.Roll[0] == player.Roll[1])
+            player.Point = player.Roll[2];
+          else if (player.Roll[0] == player.Roll[2])
+            player.Point = player.Roll[1];
+          else if (player.Roll[1] == player.Roll[2])
+            player.Point = player.Roll[0];
+          else
+            player.Point = 0;
+        }
       }
-      return point;
+
+      if (players[0].Point != 0 || players[1].Point != 0)
+      {
+        if (players[0].Point > players[1].Point)
+        {
+          players[0].Wins++;
+          Console.WriteLine($"{players[0].Name} wins {players[0].Point} - {players[1].Point}");
+        }
+        else if (players[0].Point < players[1].Point)
+        {
+          players[1].Wins++;
+          Console.WriteLine($"{players[1].Name} wins {players[1].Point} - {players[0].Point}");
+        }
+        else
+        {
+          Console.WriteLine("Tie game");
+        }
+      }
+      else
+        Console.WriteLine("No one wins. Keep your bets in and roll again.");
     }
 
     public bool checkForTrips(Player[] players)
@@ -97,37 +120,91 @@ namespace GameActions
       {
         Console.WriteLine("Yo, yall both got trips.");
         if (players[0].Point > players[1].Point)
+        {
+          players[0].Wins++;
           Console.WriteLine($"{players[0].Name} Wins with a higher {players[0].Point}!");
+        }
         else if (players[1].Point > players[0].Point)
+        {
+          players[1].Wins++;
           Console.WriteLine("Computer Wins with a higher {playerPoint}");
+        }
         else
           Console.WriteLine("Tie");
         
         return true;
       }
       else if (!players[0].Trips && !players[1].Trips) {
-        Console.WriteLine("No trips");
         return false;
       }
       else
       {
         if (players[0].Trips)
+        {
+          players[0].Wins++;
           Console.WriteLine($"{players[0].Name} Wins with TRIPS");
+        }
         else
+        {
+          players[1].Wins++;
           Console.WriteLine($"{players[1].Name} Wins with TRIPS");
+        }
 
         return true;
       }
     }
 
-    public bool is456(int[] dice)
+    public bool checkFor456(Player[] players)
     {
-      return (dice.Contains(4) && dice.Contains(5) && dice.Contains(6)) ? true : false;
+      // Parameters: [player1, computer]
+      // Theres a bug in here
+
+      foreach(Player player in players)
+      {
+        if (player.Roll.Contains(4) && player.Roll.Contains(5) && player.Roll.Contains(6))
+        {
+          player.FourFiveSix = true;
+        }
+      }
+
+      if (players[0].FourFiveSix && players[1].FourFiveSix)
+      {
+        Console.WriteLine("Add another bet and roll again");
+        return true;
+      }
+      else if (players[0].FourFiveSix && !players[1].FourFiveSix)
+      {
+        players[0].Wins++;
+        Console.WriteLine($"456, {players[0].Name}! You win.");
+        return true;
+      }
+      else if (!players[0].FourFiveSix && players[1].FourFiveSix)
+      {
+        players[1].Wins++;
+        Console.WriteLine("Computer wins with 456");
+        return true;
+      }
+      else
+      {
+        return false;
+      }
     }
 
-    public bool is123(int[] dice)
+    public bool check123(Player[] players)
     {
-      return (dice.Contains(1) && dice.Contains(2) && dice.Contains(3)) ? true : false;
+      // Parameters: [player1, computer]
+
+      foreach (Player player in players)
+      {
+        if (player.Roll.Contains(1) && player.Roll.Contains(2) && player.Roll.Contains(3))
+        {
+          // TODO: Make other player win in one gets 123
+          player.OneTwoThree = true;
+          Console.WriteLine($"{player.Name} loses with 123.");
+          return true;
+        }
+      }
+      return false;
     }
   }
 }
