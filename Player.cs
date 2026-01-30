@@ -9,12 +9,21 @@ public class Player
   public int Wins { get; set; }
 
 
-  public Player(string name, int[] roll) {
+  public Player(string name) {
     this.Name = name;
-    this.Roll = roll;
+    this.Roll = new int[3];
+    this.Point = 0;
     this.FourFiveSix = false;
     this.Trips = false;
     this.OneTwoThree = false;
     this.Wins = 0;
+  }
+
+  public void ClearScores()
+  {
+    this.Point = 0;
+    this.FourFiveSix = false;
+    this.Trips = false;
+    this.OneTwoThree = false;
   }
 }

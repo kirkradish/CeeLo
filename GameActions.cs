@@ -35,8 +35,6 @@ namespace GameActions
 
     public void assignDice(string user, int[] roll)
     {
-      Console.WriteLine($"{user} rolls: ");
-
       foreach (var die in roll)
       {
         switch (die)
@@ -77,8 +75,10 @@ namespace GameActions
             player.Point = player.Roll[2];
           else if (player.Roll[0] == player.Roll[2])
             player.Point = player.Roll[1];
-          else
+          else if (player.Roll[1] == player.Roll[2])
             player.Point = player.Roll[0];
+          else
+            player.Point = 0;
         }
       }
 
@@ -89,10 +89,14 @@ namespace GameActions
           players[0].Wins++;
           Console.WriteLine($"{players[0].Name} wins {players[0].Point} - {players[1].Point}");
         }
-        else
+        else if (players[0].Point < players[1].Point)
         {
           players[1].Wins++;
           Console.WriteLine($"{players[1].Name} wins {players[1].Point} - {players[0].Point}");
+        }
+        else
+        {
+          Console.WriteLine("Tie game");
         }
       }
       else
@@ -153,6 +157,7 @@ namespace GameActions
     public bool checkFor456(Player[] players)
     {
       // Parameters: [player1, computer]
+      // Theres a bug in here
 
       foreach(Player player in players)
       {
@@ -193,6 +198,7 @@ namespace GameActions
       {
         if (player.Roll.Contains(1) && player.Roll.Contains(2) && player.Roll.Contains(3))
         {
+          // TODO: Make other player win in one gets 123
           player.OneTwoThree = true;
           Console.WriteLine($"{player.Name} loses with 123.");
           return true;
