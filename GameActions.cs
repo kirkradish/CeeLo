@@ -201,6 +201,11 @@ namespace GameActions
           // TODO: Make other player win in one gets 123
           player.OneTwoThree = true;
           Console.WriteLine($"{player.Name} loses with 123.");
+
+          if (players[0].OneTwoThree)
+            players[1].Wins++;
+          else
+            players[0].Wins++;
           return true;
         }
       }
