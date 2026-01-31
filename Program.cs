@@ -1,9 +1,14 @@
 ﻿using System.Linq.Expressions;
 using System.Security;
 using GameActions;
+using Art;
+using System.ComponentModel.Design;
 
 
 CeeLoFunctions actions = new CeeLoFunctions();
+Designs designs = new Designs();
+
+designs.Logo();
 
 string playerName = actions.getPlayerName();
 
