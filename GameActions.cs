@@ -14,7 +14,7 @@ namespace GameActions
       string name;
       do
       {
-        Console.Write("Who's playing? ");
+        Console.Write("Welcome to the game. What's your name? ");
         // ! here is Null-Forgiving Operator
         name = Console.ReadLine()!;
         Console.Write("\n");
