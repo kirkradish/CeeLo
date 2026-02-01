@@ -15,7 +15,7 @@ string playerName = actions.getPlayerName();
 Player player1 = new Player(playerName);
 Player computer = new Player("Computer");
 
-Console.WriteLine($"Hey {player1.Name}, Welcome to the game");
+Console.WriteLine($"Betting coming soon");
 
 // give player $10, they can play/bet until they lose
 // give x or x win/loss stats and total money won/lost when they exit
@@ -49,11 +49,11 @@ do
   Console.WriteLine("\n");
 
 
-  Console.WriteLine("Want to play again? y or n: ");
+  Console.WriteLine("Want to play again? Hit the spacebar to roll again for X to exit: ");
   keyPress = Console.ReadKey();
   Console.WriteLine("\n");
 
   player1.ClearScores();
   computer.ClearScores();
 }
-while (keyPress.Key == ConsoleKey.Y);
+while (keyPress.Key == ConsoleKey.Spacebar);
